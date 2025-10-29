@@ -1,0 +1,70 @@
+.mark-attendance-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.time {
+  color: #bbb;
+  margin-bottom: 1.5rem;
+}
+
+/* 🎯 Circular button - default light blue */
+.present-button {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 2px solid #4db8ff;
+  background-color: #e6f7ff;
+  color: #007acc;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 0 15px #99d6ff, 0 0 30px #cceeff inset;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.present-button:hover {
+  background-color: #cceeff;
+  box-shadow: 0 0 25px #66c2ff, 0 0 50px #b3e0ff inset;
+}
+
+/* ✅ Present state - light green */
+.present-button.present {
+  background-color: #e6ffe6;
+  color: #00b33c;
+  border-color: #66ff99;
+  cursor: not-allowed;
+  box-shadow: 0 0 20px #80ffaa, 0 0 40px #b3ffcc inset;
+}
+
+/* ❌ Absent state - light red */
+.present-button.absent {
+  background-color: #ffe6e6;
+  color: #cc0000;
+  border-color: #ff6666;
+  cursor: not-allowed;
+  box-shadow: 0 0 20px #ff8080, 0 0 40px #ffb3b3 inset;
+}
+
+.error {
+  color: #ff4d4d;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.success {
+  color: #00b33c;
+  margin-top: 1rem;
+  font-weight: bold;
+}

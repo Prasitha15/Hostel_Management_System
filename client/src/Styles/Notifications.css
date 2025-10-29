@@ -1,0 +1,318 @@
+/* Notifications.css - Modern blue-themed styling */
+
+.notifications-page {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+}
+
+.notifications-content {
+  flex: 1;
+  padding: 2rem 3rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.notifications-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+/* Notification Form */
+.notification-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.12);
+  margin-bottom: 2.5rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.notification-form input[type="text"],
+.notification-form input[type="date"],
+.notification-form textarea,
+.notification-form select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid #dbeafe;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #334155;
+  background-color: #f8fafc;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.notification-form input:focus,
+.notification-form textarea:focus,
+.notification-form select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.notification-form input::placeholder,
+.notification-form textarea::placeholder {
+  color: #94a3b8;
+}
+
+.notification-form textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+.notification-form select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233b82f6' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+/* Submit Button */
+.auth-btn {
+  padding: 0.875rem 2rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  justify-self: start;
+  min-width: 200px;
+}
+
+.auth-btn:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+.auth-btn:active {
+  transform: translateY(0);
+}
+
+/* Notification List */
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.notification-list > p {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #64748b;
+  padding: 3rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Individual Notification Item Styling */
+.notification-item {
+  background: white;
+  padding: 1.75rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #3b82f6;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.notification-item:hover {
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+  transform: translateX(4px);
+}
+
+.notification-item h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.notification-item p {
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.notification-item .notification-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.notification-item .notification-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Type Badges */
+.notification-type {
+  display: inline-block;
+  padding: 0.35rem 0.875rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.notification-type.general {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.notification-type.maintenance {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.notification-type.event {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.notification-type.emergency {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* Date Input Styling */
+.notification-form input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: brightness(0) saturate(100%) invert(35%) sepia(91%) saturate(1736%) hue-rotate(207deg) brightness(95%) contrast(92%);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .notifications-content {
+    padding: 1.75rem 2rem;
+  }
+
+  .notification-form {
+    padding: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .notifications-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .notifications-content h1 {
+    font-size: 1.875rem;
+  }
+
+  .notification-form {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .notification-form input,
+  .notification-form textarea,
+  .notification-form select {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .auth-btn {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .notification-item {
+    padding: 1.25rem;
+  }
+
+  .notification-item h3 {
+    font-size: 1.1rem;
+  }
+
+  .notification-item p {
+    font-size: 0.9rem;
+  }
+
+  .notification-item .notification-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .notifications-content h1 {
+    font-size: 1.625rem;
+  }
+
+  .notification-form {
+    padding: 1.25rem;
+  }
+
+  .notification-item h3 {
+    font-size: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Focus states for accessibility */
+.notification-form input:focus-visible,
+.notification-form textarea:focus-visible,
+.notification-form select:focus-visible,
+.auth-btn:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Loading animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notification-item {
+  animation: fadeIn 0.4s ease;
+}
+
+/* Empty state styling */
+.notification-list > p {
+  font-style: italic;
+}
+
+/* Form validation states */
+.notification-form input:invalid:not(:placeholder-shown),
+.notification-form textarea:invalid:not(:placeholder-shown) {
+  border-color: #fca5a5;
+}
+
+.notification-form input:valid:not(:placeholder-shown),
+.notification-form textarea:valid:not(:placeholder-shown) {
+  border-color: #86efac;
+}

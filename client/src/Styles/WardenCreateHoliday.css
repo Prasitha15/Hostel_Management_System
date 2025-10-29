@@ -1,0 +1,296 @@
+/* WardenCreateHoliday.css - Modern blue-themed styling */
+
+.create-holiday-container {
+  padding: 2rem;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-holiday-container h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  letter-spacing: -0.5px;
+}
+
+/* Holiday Form */
+.holiday-form {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(30, 64, 175, 0.15);
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.holiday-form label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.holiday-form input[type="text"],
+.holiday-form input[type="date"],
+.holiday-form textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid #dbeafe;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #334155;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background-color: #f8fafc;
+}
+
+.holiday-form input[type="text"]:focus,
+.holiday-form input[type="date"]:focus,
+.holiday-form textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.holiday-form input::placeholder,
+.holiday-form textarea::placeholder {
+  color: #94a3b8;
+}
+
+.holiday-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Submit Button */
+.submit-btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  margin-top: 1rem;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 64, 175, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Popup Content */
+.popup {
+  background: white;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(30, 64, 175, 0.3);
+  text-align: center;
+  min-width: 320px;
+  max-width: 420px;
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tick-mark {
+  font-size: 3.5rem;
+  color: #3b82f6;
+  margin-bottom: 1rem;
+  animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.popup p {
+  font-size: 1.1rem;
+  color: #334155;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.popup button {
+  padding: 0.75rem 2.5rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.popup button:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+}
+
+.popup button:active {
+  transform: translateY(0);
+}
+
+/* Form Field Group Styling */
+.holiday-form > div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Date Input Custom Styling */
+.holiday-form input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: brightness(0) saturate(100%) invert(35%) sepia(91%) saturate(1736%) hue-rotate(207deg) brightness(95%) contrast(92%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .create-holiday-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .create-holiday-container h2 {
+    font-size: 1.75rem;
+  }
+
+  .holiday-form {
+    padding: 2rem 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .holiday-form label {
+    font-size: 0.9rem;
+  }
+
+  .holiday-form input[type="text"],
+  .holiday-form input[type="date"],
+  .holiday-form textarea {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .popup {
+    min-width: 85%;
+    padding: 1.75rem 2rem;
+  }
+
+  .popup p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .create-holiday-container h2 {
+    font-size: 1.5rem;
+    gap: 0.5rem;
+  }
+
+  .holiday-form {
+    padding: 1.5rem 1rem;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}
+
+/* Focus visible for accessibility */
+.holiday-form input:focus-visible,
+.holiday-form textarea:focus-visible,
+.submit-btn:focus-visible,
+.popup button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Error state (if needed in future) */
+.holiday-form input.error,
+.holiday-form textarea.error {
+  border-color: #ef4444;
+}
+
+.holiday-form input.error:focus,
+.holiday-form textarea.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Loading state for submit button (if needed) */
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #94a3b8;
+  box-shadow: none;
+}
+
+.submit-btn:disabled:hover {
+  transform: none;
+}

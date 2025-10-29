@@ -1,0 +1,159 @@
+/* Auth.css */
+
+/* Container */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f6f9;
+  padding: 20px;
+}
+
+/* Card */
+.auth-card {
+  width: 100%;
+  max-width: 550px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Title */
+.auth-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1a237e;
+}
+
+/* Input fields */
+.auth-input,
+.auth-textarea,
+.auth-select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.auth-input:focus,
+.auth-textarea:focus,
+.auth-select:focus {
+  border-color: #1a237e;
+  outline: none;
+  box-shadow: 0 0 5px rgba(26, 35, 126, 0.3);
+}
+
+/* Small error messages */
+.auth-error {
+  color: red;
+  font-size: 12px;
+  margin-top: -8px;
+  margin-bottom: 10px;
+}
+
+/* Password toggle */
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Checkbox container */
+.verify-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 10px 0;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fafafa;
+  width: fit-content;
+  font-size: 13px;
+}
+
+/* Button */
+.auth-button {
+  width: 100%;
+  background: #1a237e;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 8px;
+}
+
+.auth-button:hover {
+  background: #0d1652;
+}
+
+.auth-button:disabled {
+  background: #9e9e9e;
+  cursor: not-allowed;
+}
+
+/* Switch mode link */
+.switch-text {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+.switch-link {
+  color: #1a237e;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.switch-link:hover {
+  text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Center toast in the middle of the screen */
+.Toastify__toast-container--top-center {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* Dim and blur the background while toast is visible */
+.Toastify__toast-container::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(3px);
+  z-index: -1;
+}
+
+/* Make sure toast appears above blur */
+.Toastify__toast {
+  z-index: 10000 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}

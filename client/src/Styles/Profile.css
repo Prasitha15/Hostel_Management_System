@@ -1,0 +1,165 @@
+/* Wrapper */
+.profile-wrapper {
+  max-width: 900px;
+  margin: 50px auto;
+  background: #f9fafb;
+  border-radius: 20px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #e0e7ff;
+  border: 3px solid #1e3a8a;
+  padding: 5px;
+}
+
+.profile-header h1 {
+  font-size: 24px;
+  color: #1e3a8a;
+  margin: 0;
+}
+
+.role {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* Card sections */
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* Headings */
+.card h3 {
+  font-size: 18px;
+  color: #0f172a;
+  margin-bottom: 20px;
+  border-left: 4px solid #1e3a8a;
+  padding-left: 10px;
+}
+
+/* Grid layouts */
+.info-grid, .form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px 24px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Inputs */
+.profile-form label {
+  font-weight: 500;
+  color: #1f2937;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.profile-form input,
+.profile-form textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  background: #f1f5f9;
+  transition: all 0.2s ease;
+}
+
+.profile-form input:focus,
+.profile-form textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  background: #ffffff;
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+button.edit {
+  background: #1e3a8a;
+  color: #fff;
+}
+
+button.save {
+  background: #2563eb;
+  color: #fff;
+}
+
+button.cancel {
+  background: #6b7280;
+  color: #fff;
+}
+
+button.delete {
+  background: #dc2626;
+  color: #fff;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Error / loading */
+.loading, .error {
+  text-align: center;
+  color: #64748b;
+  margin-top: 60px;
+}
+/* Password Section */
+.password-card {
+  margin-top: 30px;
+  background: #fefefe;
+  border-left: 5px solid #2563eb;
+}
+
+button.password {
+  background: #0ea5e9;
+  color: white;
+}
+
+button.password:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}

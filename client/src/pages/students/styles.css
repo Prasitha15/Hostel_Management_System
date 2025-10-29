@@ -1,0 +1,833 @@
+@import "leaflet/dist/leaflet.css";
+
+/* ===== Global Reset ===== */
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background: linear-gradient(135deg, #f9fbfd, #eef2f7);
+  min-height: 100vh;
+  color: #111827;
+}
+
+/* ===== Centered Container (Login) ===== */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-box {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  width: 380px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transition: transform 0.25s ease;
+}
+
+.login-box:hover {
+  transform: translateY(-6px);
+}
+
+.logo .icon {
+  font-size: 42px;
+  background: #2563eb;
+  color: white;
+  width: 65px;
+  height: 65px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  margin-bottom: 12px;
+}
+
+.logo h2 {
+  margin: 0;
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.logo p {
+  margin: 6px 0 20px;
+  color: #555;
+}
+
+/* ===== Tabs ===== */
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 10px;
+  cursor: pointer;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  font-weight: 600;
+  transition: all 0.25s;
+}
+
+.tabs button.active {
+  background: #fff;
+  border-bottom: 3px solid #2563eb;
+  color: #2563eb;
+}
+
+/* ===== Forms ===== */
+form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  transition: border 0.25s;
+}
+
+form input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 4px rgba(37, 99, 235, 0.4);
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  background: #2563eb;
+  border: none;
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background: #1d4ed8;
+}
+
+/* ===== Dashboard Layout ===== */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background: #fff;
+  border-right: 1px solid #e5e7eb;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.06);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.main-content {
+  margin-left: 220px;
+  padding: 20px;
+}
+
+/* ===== Sidebar Buttons ===== */
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px;
+}
+
+.sidebar-btn {
+  height: 45px;
+  border-radius: 10px;
+  border: none;
+  background: #f3f4f6;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 0 15px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.sidebar-btn .icon {
+  font-size: 18px;
+}
+
+.sidebar-btn:hover {
+  background: #e5e7eb;
+}
+
+.sidebar-btn.active {
+  background: #2563eb;
+  color: #fff;
+}
+
+.sidebar-btn.logout {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.sidebar-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 20px;
+}
+
+/* ===== Dashboard Content ===== */
+.dashboard-content {
+  margin-left: 220px;
+  flex: 1;
+  padding: 24px;
+}
+
+/* ===== Welcome Banner ===== */
+.welcome-banner {
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  padding: 24px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+  text-align: center;
+  animation: fadeSlide 0.8s ease-in-out;
+}
+
+.welcome-banner h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+.welcome-banner span {
+  color: #2563eb;
+  font-weight: 800;
+  text-shadow: 0 0 6px rgba(37, 99, 235, 0.2);
+}
+
+/* ===== Info Grid ===== */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* ===== Cards (Modules) ===== */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px 24px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #2563eb;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #1e3a8a;
+  font-weight: 600;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 8px;
+}
+
+/* ===== Card Content Alignment ===== */
+.card p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card ul li {
+  background: #f9fafb;
+  border-left: 4px solid #2563eb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.card ul li:hover {
+  background: #eef2ff;
+  transform: scale(1.01);
+}
+
+/* ===== Leave Notification Card Variant ===== */
+.card.leave ul li {
+  border-left-color: #fb923c;
+  background: #fff7ed;
+}
+
+.card.leave ul li:hover {
+  background: #ffedd5;
+}
+
+/* ===== Status Cards ===== */
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.2rem;
+}
+
+.status-card {
+  background: linear-gradient(135deg, #3b82f6, #9333ea);
+  color: white;
+  padding: 18px;
+  border-radius: 14px;
+  text-align: center;
+  font-weight: 600;
+  transition: transform 0.25s;
+}
+
+.status-card:hover {
+  transform: scale(1.06);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsive Fixes ===== */
+@media (max-width: 768px) {
+  .sidebar { width: 70px; }
+  .dashboard-content { margin-left: 70px; }
+  .welcome-banner h2 { font-size: 1.4rem; }
+  .card { padding: 18px; }
+}
+
+/* ===== Profile Page ===== */
+.profile-container {
+  margin-left: 220px;
+  padding: 20px;
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+.profile-card {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  max-width: 800px;
+  margin: auto;
+}
+
+.profile-card h2 {
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2563eb;
+  text-align: center;
+}
+
+.profile-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.profile-info .info-item {
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-info .label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.profile-info .value {
+  color: #111827;
+}
+
+@media (max-width: 768px) {
+  .profile-container { margin-left: 70px; }
+  .profile-info { grid-template-columns: 1fr; }
+}
+
+/* ===== Calendar & Button Styles ===== */
+.present-btn {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  background: radial-gradient(circle, #1f8f3e, #0d4d1f);
+  color: #b9f6ca;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+}
+
+.present-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.9);
+}
+
+.present-btn:active {
+  transform: scale(0.95);
+}
+
+.present-btn.disabled {
+  background: #444;
+  color: #999;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.present-btn.loading {
+  background: #666;
+  color: #ccc;
+}
+
+/* ===== Calendar ===== */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.calendar-day-name {
+  font-weight: bold;
+  color: #333;
+  padding: 4px 0;
+}
+
+.calendar-day {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #333;
+}
+
+.calendar-day.today {
+  background: #dbeafe;
+  font-weight: bold;
+}
+
+.calendar-day.disabled {
+  color: #bbb;
+}
+
+.legend .present {
+  color: green;
+}
+
+.legend .absent {
+  color: crimson;
+}
+
+.calendar-header button {
+  padding: 6px 14px;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.calendar-header button:nth-child(1) {
+  background: #3b82f6;
+  color: white;
+}
+.calendar-header button:nth-child(1):hover {
+  background: #2563eb;
+}
+
+.calendar-header button:nth-child(2) {
+  background: #6b7280;
+  color: white;
+}
+.calendar-header button:nth-child(2):hover {
+  background: #4b5563;
+}
+
+.calendar-header button:nth-child(3) {
+  background: #10b981;
+  color: white;
+}
+.calendar-header button:nth-child(3):hover {
+  background: #059669;
+}
+
+/* ===== Notifications ===== */
+.notification-list li {
+  transition: all 0.2s ease;
+}
+.notification-list li:hover {
+  transform: scale(1.02);
+  background-color: #f9fafb;
+}
+
+/* ===== Notification Popup ===== */
+.notification-popup {
+  animation: fadeIn 0.3s ease forwards;
+  z-index: 1000;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ===== Enhanced Notification & Leave Notification Styles ===== */
+.card ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  background: #f9fafb;
+  border-left: 4px solid #2563eb;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  transition: background 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.card ul li:hover {
+  background: #eef2ff;
+  border-left-color: #1e3a8a;
+  transform: translateY(-3px);
+}
+
+/* Title */
+.card ul li strong {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e3a8a;
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+/* Description */
+.card ul li p {
+  font-size: 0.92rem;
+  color: #374151;
+  margin: 0;
+  line-height: 1.4;
+  width: 100%;
+  text-align: justify;
+}
+
+/* Date / Timestamp */
+.card ul li small {
+  font-size: 0.82rem;
+  color: #6b7280;
+  text-align: right;
+  align-self: flex-end;
+  margin-top: 4px;
+}
+
+/* ===== Leave Notification Specific ===== */
+.card.leave ul li {
+  border-left-color: #fb923c;
+  background: #fff7ed;
+}
+
+.card.leave ul li:hover {
+  background: #ffedd5;
+  border-left-color: #ea580c;
+}
+
+/* ===== Optional: Subtle Divider between Notifications ===== */
+.card ul li:not(:last-child)::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: #e5e7eb;
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* ===== Academic Information Card Enhancement ===== */
+.card.academic-info {
+  padding: 28px 30px; /* slightly more padding */
+}
+
+.card.academic-info h3 {
+  font-size: 1.5rem; /* bigger title */
+  color: #1e3a8a;
+  margin-bottom: 1.2rem;
+}
+
+.card.academic-info p {
+  font-size: 1.05rem; /* bigger text for details */
+  color: #111827;
+  line-height: 1.7;
+  margin: 8px 0;
+}
+/* ===== Leave Form Professional College Style ===== */
+/* ===== Leave Form Bordered Like Map ===== */
+/* ===== Leave Form Professional Full Width ===== */
+.leave-card {
+  background: #ffffff;        /* white card */
+  border: 1px solid #d1d5db; /* subtle gray border like map */
+  border-radius: 15px;
+  padding: 32px 40px;
+  width: 100%;               /* full width */
+  max-width: 1200px;         /* match map width */
+  margin: 40px auto;         /* center horizontally */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.leave-form h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 28px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 8px;
+}
+
+/* Flex container for each field: label + input */
+.form-field {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.form-field label {
+  width: 180px; /* fixed label width */
+  text-align: right;
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  font-size: 1rem;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.2);
+}
+/* Add extra space before Reason textarea */
+.form-field.reason-field {
+  margin-top: 16px; /* distance from previous field */
+}
+
+textarea {
+  
+  min-height: 120px;
+  resize: vertical;
+}
+
+button.submit-btn {
+  background-color: #2563eb;
+  color: white;
+  font-weight: 500;
+  padding: 12px 28px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button.submit-btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* Responsive: stack label above input on small screens */
+@media (max-width: 1024px) {
+  .form-field {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-field label {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 6px;
+  }
+}/* ===== Buttons Styling ===== */
+button.submit-btn,
+button.clear-btn {
+  padding: 6px 16px;        /* smaller padding for professional look */
+  font-size: 0.85rem;       /* smaller font */
+  border-radius: 4px;
+  width: 100px;       /* subtle radius */
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button.submit-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+}
+
+button.submit-btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+button.clear-btn {
+  background-color: #e5e7eb;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+button.clear-btn:hover {
+  background-color: #d1d5db;
+  transform: translateY(-1px);
+}
+
+/* Add spacing above buttons */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;      /* space between buttons */
+  margin-top: 16px; /* distance from last input/textarea */
+}
+
+
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-btn {
+  background: #ffcc00;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.nav-btn:hover {
+  background: #e6b800;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.day-name {
+  text-align: center;
+  font-weight: bold;
+  background: #e9ecef;
+  padding: 10px 0;
+  border-radius: 8px;
+}
+
+.calendar-day {
+  text-align: center;
+  padding: 15px 0;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: 0.3s ease;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.calendar-day.present {
+  background-color: #4ade80; /* green */
+  color: white;
+}
+
+.calendar-day.absent {
+  background-color: #f87171; /* red */
+  color: white;
+}
+
+.calendar-day.leave {
+  background-color: #facc15; /* yellow */
+  color: white;
+}
+
+.calendar-day.unmarked {
+  background-color: #e5e7eb; /* light gray */
+  color: #6b7280;
+}
+
+.calendar-day.outside-month {
+  background-color: #d1d5db; /* darker gray for other months */
+  color: #9ca3af;
+}
+.notification-dropdown {
+  animation: fadeIn 0.25s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

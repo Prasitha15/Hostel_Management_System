@@ -1,0 +1,172 @@
+.calendar-container {
+  width: 100%;
+  max-width: 4500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  overflow-x: auto; /* prevents overflow issues */
+}
+
+/* ---------- HEADER ---------- */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.nav-btn, .today-btn {
+  padding: 8px 14px;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.nav-btn {
+  background: #3498db;
+  color: #fff;
+}
+
+.nav-btn:hover {
+  background: #2980b9;
+}
+
+.today-btn {
+  background: #2ecc71;
+  color: #fff;
+}
+
+.today-btn:hover {
+  background: #27ae60;
+}
+
+.calendar-title {
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+  flex: 1;
+}
+
+/* ---------- GRID ---------- */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  text-align: center;
+  min-width: 700px;
+}
+
+.calendar-day-name {
+  font-weight: bold;
+  color: #555;
+  font-size: 13px;
+}
+
+.calendar-day {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.calendar-day:hover {
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+.calendar-day.today {
+  border: 2px solid #3498db;
+}
+
+.calendar-day.present {
+  background: #2ecc71;
+  color: #fff;
+  font-weight: bold;
+}
+
+.calendar-day.outside-month {
+  color: #bbb;
+}
+
+/* ---------- LEGEND ---------- */
+.calendar-legend {
+  margin-top: 15px;
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.present {
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+.absent {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1024px) {
+  .calendar-container {
+    padding: 15px;
+  }
+
+  .calendar-day {
+    height: 35px;
+    font-size: 12px;
+  }
+
+  .calendar-title {
+    font-size: 14px;
+  }
+
+  .nav-btn, .today-btn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .calendar-grid {
+    grid-template-columns: repeat(7, minmax(35px, 1fr));
+  }
+
+  .calendar-day {
+    height: 32px;
+    font-size: 11px;
+  }
+
+  .calendar-day-name {
+    font-size: 11px;
+  }
+
+  .calendar-title {
+    font-size: 13px;
+  }
+}
+.present {
+  background-color: green;
+  color: white;
+}
+
+.absent {
+  background-color: red;
+  color: white;
+}
+
+.leave {
+  background-color: yellow;
+  color: black;
+}
