@@ -1,0 +1,18 @@
+{
+  "name": "hostel-server",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "mysql2": "^3.9.3",
+    "nodemailer": "^6.9.4",
+    "jsonwebtoken": "^9.0.2",
+    "util": "^0.12.5"
+  }
+}

@@ -6,6 +6,9 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import cron from "node-cron";
 import util from "util";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const PORT = 5000;
@@ -14,17 +17,20 @@ const JWT_SECRET = "a98f4f22aaaa2bef68cda9c4a54c4857525f4a5e831ef95f61d19830e0ea
 // ==============================
 // Middleware
 // ==============================
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors());
+
 app.use(express.json());
 
 // ==============================
 // MySQL connection
 // ==============================
+
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Prasitha@15",
-  database: "hostel_db",
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
+  port: process.env.MYSQLPORT
 });
 
 db.connect((err) => {
@@ -2094,12 +2100,6 @@ ORDER BY created_at DESC
 });
 
 
-app.listen(5000, () => console.log("✅ Stay Approval Backend running on port 5000"));
+export default app;
 
 
-// ==============================
-// START SERVER
-// ==============================
-app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
-});
